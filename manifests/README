@@ -1,0 +1,9 @@
+php5
+============
+
+This is a puppet module to manage installation of php5.
+Module is composed by three subclasses that installs independently php5-cli and/or libapache2-mod-php5 and/or php5-fpm.
+
+This module contain also a define for creation and tuning of a php5-fpm pool (php5::fpm::pool). Each php5-fpm pool can work with its own user:group and have a configuration file under
+/etc/php5/fpm/pool.d. Most usefull tuning variables are presents in this directory.
+Another define is php5::fpm::pool::tuning, this define can flexible tuning each single php5-fpm pool. This tuning directive will'be written under /etc/php5/fpm/pool_tuning.d
