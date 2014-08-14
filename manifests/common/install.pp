@@ -8,7 +8,7 @@ class php5::common::install {
       }
     }
 
-    if !defined(Apt_puppetlabs::Pin['php5-common']) {
+    if !defined(Apt::Pin['php5-common']) {
       apt::pin {'php5-common':
         packages  =>'php5-common',
         version   => $php5::common::php_ensure,
@@ -17,7 +17,7 @@ class php5::common::install {
       }
     }
 
-    $php_require = [ Softec_apt::Ppa['ondrej/php5-oldstable'], Apt_puppetlabs::Pin['php5-common'] ]
+    $php_require = [ Softec_apt::Ppa['ondrej/php5-oldstable'], Apt::Pin['php5-common'] ]
   }
   else {
     $php_require = undef

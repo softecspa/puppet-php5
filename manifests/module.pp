@@ -30,7 +30,7 @@ define php5::module($ensure='UNSET', $modulename=false) {
     $ensure_real = 'present'
   } elsif $ensure == 'pin' {
     $ensure_real = $php5::common::php_ensure
-    if !defined(Apt_puppetlabs::Pin[$real_name]) {
+    if !defined(Apt::Pin[$real_name]) {
       apt::pin{$real_name :
         packages  => $real_name,
         version   => $php5::common::php_ensure,
