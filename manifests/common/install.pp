@@ -1,21 +1,23 @@
 class php5::common::install {
 
   if $php5::common::php_ensure =~ /5.4.*/ {
-    if !defined(Apt::Ppa['ondrej/php5-oldstable']) {
-      apt::ppa { 'ondrej/php5-oldstable':
-        key => 'E5267A6C',
-        mirror => true
+    if !defined(Softec_apt::Ppa['ondrej/php5-oldstable']) {
+      softec_apt::ppa { 'ondrej/php5-oldstable':
+        mirror  => true,
+        key     => 'E5267A6C'
       }
     }
 
-    if !defined(Apt::Pin['php5-common']) {
-      apt::pin {'php5-common':
-        version => $php5::common::php_ensure,
-        require => Apt::Ppa['ondrej/php5-oldstable']
+    if !defined(Apt_puppetlabs::Pin['php5-common']) {
+      apt_puppetlabs::pin {'php5-common':
+        packages  =>'php5-common',
+        version   => $php5::common::php_ensure,
+        priority  => '1001',
+        require   => Softec_apt::Ppa['ondrej/php5-oldstable']
       }
     }
-    
-    $php_require = [ Apt::Ppa['ondrej/php5-oldstable'], Apt::Pin['php5'] ]
+
+    $php_require = [ Softec_apt::Ppa['ondrej/php5-oldstable'], Apt_puppetlabs::Pin['php5-common'] ]
   }
   else {
     $php_require = undef
