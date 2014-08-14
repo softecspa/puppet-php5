@@ -9,7 +9,7 @@ class php5::common::install {
     }
 
     if !defined(Apt_puppetlabs::Pin['php5-common']) {
-      apt_puppetlabs::pin {'php5-common':
+      apt::pin {'php5-common':
         packages  =>'php5-common',
         version   => $php5::common::php_ensure,
         priority  => '1001',

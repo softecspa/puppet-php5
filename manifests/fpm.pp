@@ -15,7 +15,7 @@ class php5::fpm (
   include php5::fpm::config
   include php5::fpm::service
 
-  apt_puppetlabs::pin { 'php5-fpm':
+  apt::pin { 'php5-fpm':
     packages  => 'php5-fpm',
     version   => $php5::common::php_ensure,
     priority  => '1001'
